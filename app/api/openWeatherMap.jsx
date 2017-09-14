@@ -13,13 +13,22 @@ module.exports = {
     console.log(requestUrl);
     return axios.get(requestUrl).then(
       function(res){
+
         if (res.data.cod && res.data.message){
-          throw new Error(res.data.message);
-        }else {
-          return res.data.main.temp;
+          throw new Error('ERROR: '+ lcoation + ' not found. ');
+        }else{
+          var reqLocation = location.replace(/[^a-zA-Z]/g, "");
+          var resLocation = res.data.name.replace(/[^a-zA-Z]/g, "");
+          if (reqLocation.indexOf(resLocation) == -1 && resLocation.indexOf(reqLocation) == -1 ){
+            throw new Error("Can not find " + location + "." +
+              '\nClosest Mathc: ' + res.data.name + ", " + res.data.sys.country);
+          }else {
+            return res.data.main.temp;
+          }
         }
       }, function(res){
-        throw new Error(res.data.message);
+        //throw new Error(res.data.message);
+        throw new Error('ERROR: weather request');
 
       }
     );
