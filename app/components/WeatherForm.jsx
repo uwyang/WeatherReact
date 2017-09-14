@@ -1,13 +1,14 @@
 var React = require('react');
 
 
+//expanded makes things full width.
 var WeatherForm = React.createClass({
   render: function(){
     return (
       <div>
         <form onSubmit={this.onFormSubmit}>
           <input type="text" ref="location"/>
-          <button>Submit</button>
+          <button className="button expanded hollow">Submit</button>
         </form>
       </div>
     );

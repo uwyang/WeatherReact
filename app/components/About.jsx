@@ -15,7 +15,7 @@ var About = React.createClass({
 //you can only refactor stateless stuff!!!
 var About = (props)=>{
     return (
-    <h3>About Component</h3>
+    <h1 className="text-center">About</h1>
   );
 };
 
