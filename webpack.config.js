@@ -1,5 +1,24 @@
+var webpack = require('webpack');
+
 module.exports = {
-  entry: './app/app.jsx',
+  entry: [
+    //script loader npm module, because webpack might not load them right.
+    //load scripts before app.jsx!!!!
+    'script!jquery/dist/jquery.min.js',
+    'script!foundation-sites/dist/foundation.min.js',
+    './app/app.jsx'
+  ],
+  externals: {
+    //let foundation properly attach to jquery method.
+    jquery: 'jQuery',
+  },
+  plugins: [
+    new webpack.ProvidePlugin({
+      //if you see$, use jquery, etcetc.
+      '$': 'jquery',
+      'jQuery': 'jquery'
+    })
+  ],
   output: {
     path: __dirname,
     filename: './public/bundle.js'
@@ -31,6 +50,6 @@ module.exports = {
       }
     ]
   },
-  // helps debugging better. 
+  // helps debugging better.
   devtool: 'cheap-module-eval-source-map'
 };

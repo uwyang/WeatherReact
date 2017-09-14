@@ -1,4 +1,5 @@
 var React = require('react')
+//we have to use query tag, OR; use webpack.
 
 /*
 var About = React.createClass({
