@@ -13,8 +13,10 @@ var Examples = React.createClass({
 
 var Examples = (props)=> {
   return (
-  <h3>Example Component</h3>
-  <p>Welcome to example page!</p>
+    <div>
+      <h3>Example Component</h3>
+      <p>Welcome to example page!</p>
+    </div>
   );
 };
 
