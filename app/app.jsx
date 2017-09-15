@@ -12,6 +12,8 @@ var Examples = require('Examples');
 require('style!css!foundation-sites/dist/foundation.min.css')
 $(document).foundation();
 
+require('style!css!applicationStyles'); 
+
 
 //ES6 object de-structuring.
 var {Route, Router, IndexRoute, hashHistory}=require('react-router');
