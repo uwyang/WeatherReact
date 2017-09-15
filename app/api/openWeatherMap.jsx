@@ -17,9 +17,9 @@ module.exports = {
         if (res.data.cod && res.data.message){
           throw new Error('ERROR: '+ lcoation + ' not found. ');
         }else{
-          var reqLocation = location.replace(/[^a-zA-Z]/g, "");
-          var resLocation = res.data.name.replace(/[^a-zA-Z]/g, "");
-          if (reqLocation.indexOf(resLocation) == -1 && resLocation.indexOf(reqLocation) == -1 ){
+          var reqLocation = location.replace(/[^a-zA-Z]/g, "").toLowerCase();
+          var resLocation = res.data.name.replace(/[^a-zA-Z]/g, "").toLowerCase();
+          if (reqLocation.indexOf(resLocation) === -1 && resLocation.indexOf(reqLocation) == -1 ){
             throw new Error("Can not find " + location + "." +
               '\nClosest Mathc: ' + res.data.name + ", " + res.data.sys.country);
           }else {

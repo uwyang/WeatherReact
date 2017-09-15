@@ -44,7 +44,7 @@ var Nav = React.createClass({
           <form onSubmit={this.onSearch}>
             <ul className="menu">
               <li>
-                <input type="search" placeholder="Search Weather" />
+                <input type="search" placeholder="Search Weather" ref="navSearchLocation"/>
               </li>
               <li>
                 <input type="submit" className="button" value="Get Weather"/>
@@ -57,7 +57,15 @@ var Nav = React.createClass({
   },
   onSearch: function(e){
     e.preventDefault();
-    console.log("not wired up. ");
+    var location = this.refs.navSearchLocation.value;
+    //console.log("not wired up, but location: ", location);
+    var encodedLocation = encodeURIComponent(location);
+    if (location.length >0 ){
+      //clearing the value
+      this.refs.navSearchLocation.value = "";
+      window.location.hash= "#/?location=" + encodedLocation; //brings to that location.
+
+    }
   }
 });
 
